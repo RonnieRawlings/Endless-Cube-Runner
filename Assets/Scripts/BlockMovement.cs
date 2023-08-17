@@ -10,7 +10,7 @@ public class BlockMovement : MonoBehaviour
     private float speed = 50; 
 
     // Update is called once per frame
-    void Update()
+    void FixedUpdate()
     {
         // Once spawned in, move block across the plane.
         transform.Translate(Vector3.back * Time.deltaTime * speed);

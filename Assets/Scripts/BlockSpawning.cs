@@ -6,14 +6,28 @@ using UnityEngine;
 
 public class BlockSpawning : MonoBehaviour
 {
-    private bool setMarkers = false;
+    /// <summary> method <c>DebugCameraField</c> Places markers where the camera bounds are, shows spawning zone. </summary>
+    public void DebugCameraField(float minX, float maxX)
+    {
+        GameObject[] allMarkers = GameObject.FindGameObjectsWithTag("Marker");
+        foreach (GameObject marker in allMarkers)
+        {
+            Destroy(marker);
+        }
+
+        var prefabCameraMarker = Resources.Load<GameObject>("Prefabs/Marker");
+        GameObject firstMarker = Instantiate(prefabCameraMarker, new Vector3(minX, 7f, 150f), Quaternion.identity);
+        GameObject secondMarker = Instantiate(prefabCameraMarker, new Vector3(maxX, 7f, 150f), Quaternion.identity);
+        firstMarker.tag = "Marker";
+        secondMarker.tag = "Marker";
+    }
 
     /// <summary> method <c>SpawnObject</c> Uses the current camera world position to spawn an object at the edge of the floor. </summary>
     public void SpawnObject()
     {
         // Get the left and right edges of the camera's view
-        Vector3 leftEdge = Camera.main.ViewportToWorldPoint(new Vector3(0, 0, 45));
-        Vector3 rightEdge = Camera.main.ViewportToWorldPoint(new Vector3(1, 0, 45));
+        Vector3 leftEdge = Camera.main.ViewportToWorldPoint(new Vector3(0, 0, 100));
+        Vector3 rightEdge = Camera.main.ViewportToWorldPoint(new Vector3(1, 0, 100));
 
         // Calculate the range of possible x values
         float minX = leftEdge.x;
@@ -22,14 +36,8 @@ public class BlockSpawning : MonoBehaviour
         // Generate a random x value within the range
         float x = Random.Range(minX, maxX);
 
-        if (!setMarkers)
-        {
-            var prefabCameraMarker = Resources.Load<GameObject>("Prefabs/Marker");
-            Instantiate(prefabCameraMarker, new Vector3(minX, 7f, 150f), Quaternion.identity);
-            Instantiate(prefabCameraMarker, new Vector3(maxX, 7f, 150f), Quaternion.identity);
-
-            setMarkers = true;
-        }
+        // USED FOR DEBUGGING - CAMERA
+        DebugCameraField(minX, maxX);
 
         // Spawn your object at the desired position
         Vector3 spawnPosition = new Vector3(x, 7f, 150f);
