@@ -9,12 +9,14 @@ public class BlockSpawning : MonoBehaviour
     /// <summary> method <c>DebugCameraField</c> Places markers where the camera bounds are, shows spawning zone. </summary>
     public void DebugCameraField(float minX, float maxX)
     {
+        // Removes the current markers from the scene.
         GameObject[] allMarkers = GameObject.FindGameObjectsWithTag("Marker");
         foreach (GameObject marker in allMarkers)
         {
             Destroy(marker);
         }
 
+        // Spawns in new markers from resources.
         var prefabCameraMarker = Resources.Load<GameObject>("Prefabs/Marker");
         GameObject firstMarker = Instantiate(prefabCameraMarker, new Vector3(minX, 7f, 150f), Quaternion.identity);
         GameObject secondMarker = Instantiate(prefabCameraMarker, new Vector3(maxX, 7f, 150f), Quaternion.identity);
@@ -35,9 +37,6 @@ public class BlockSpawning : MonoBehaviour
 
         // Generate a random x value within the range
         float x = Random.Range(minX, maxX);
-
-        // USED FOR DEBUGGING - CAMERA
-        DebugCameraField(minX, maxX);
 
         // Spawn your object at the desired position
         Vector3 spawnPosition = new Vector3(x, 7f, 150f);
