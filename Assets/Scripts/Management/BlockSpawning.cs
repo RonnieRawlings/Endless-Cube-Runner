@@ -49,11 +49,10 @@ public class BlockSpawning : MonoBehaviour
     public IEnumerator ManageObjectSpawning()
     {
         // Waits then spawns a cube at random position.
-        yield return new WaitForSeconds(2.0f);
+        yield return new WaitForSeconds(0.125f);
         SpawnObject();
 
-        // Waits again, re-calls this routine.
-        yield return new WaitForSeconds(2.0f);
+        // Re-calls this routine.
         StartCoroutine(ManageObjectSpawning());
     }
 
