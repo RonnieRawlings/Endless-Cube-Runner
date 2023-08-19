@@ -28,8 +28,8 @@ public class BlockSpawning : MonoBehaviour
     public void SpawnObject()
     {
         // Get the left and right edges of the camera's view
-        Vector3 leftEdge = Camera.main.ViewportToWorldPoint(new Vector3(0, 0, 100));
-        Vector3 rightEdge = Camera.main.ViewportToWorldPoint(new Vector3(1, 0, 100));
+        Vector3 leftEdge = Camera.main.ViewportToWorldPoint(new Vector3(0, 0, 800));
+        Vector3 rightEdge = Camera.main.ViewportToWorldPoint(new Vector3(1, 0, 800));
 
         // Calculate the range of possible x values
         float minX = leftEdge.x;
@@ -39,7 +39,7 @@ public class BlockSpawning : MonoBehaviour
         float x = Random.Range(minX, maxX);
 
         // Spawn your object at the desired position
-        Vector3 spawnPosition = new Vector3(x, 7f, 150f);
+        Vector3 spawnPosition = new Vector3(x, 7f, 700f);
         var prefabCube = Resources.Load<GameObject>("Prefabs/MovingBlock (Standard)");
         Instantiate(prefabCube, spawnPosition, Quaternion.identity);
     }
@@ -48,7 +48,7 @@ public class BlockSpawning : MonoBehaviour
     public IEnumerator ManageObjectSpawning()
     {
         // Waits then spawns a cube at random position.
-        yield return new WaitForSeconds(0.125f);
+        yield return new WaitForSeconds(0.075f);
         SpawnObject();
 
         // Re-calls this routine.

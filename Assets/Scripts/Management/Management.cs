@@ -13,8 +13,8 @@ public class Management : MonoBehaviour
     // Prevents incrementing playerUI value multiple times.
     private bool isCoroutineExecuting = false;
 
-    /// <summary> interface <c>IncrementText</c> Increases the visual meters text by the distance increase over 1 second. </summary>
-    public IEnumerator IncrementText(int targetValue)
+    /// <summary> interface <c>IncrementDistanceText</c> Increases the visual meters text by the distance increase over 1 second. </summary>
+    public IEnumerator IncrementDistanceText(int targetValue)
     {
         // Stops other routines + removes letters from value.
         isCoroutineExecuting = true;
@@ -41,7 +41,7 @@ public class Management : MonoBehaviour
         // Set new distance in playerUI.
         if (!isCoroutineExecuting)
         {
-            StartCoroutine(IncrementText(StaticValues.distanceCovered));
+            StartCoroutine(IncrementDistanceText(StaticValues.distanceCovered));
         }           
     }
 
