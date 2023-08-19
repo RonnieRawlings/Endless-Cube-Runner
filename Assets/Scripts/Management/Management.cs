@@ -34,13 +34,14 @@ public class Management : MonoBehaviour
 
     /// <summary> method <c>UpdateDistance</c> Calculates the current distance travelled, shows it visually using TextMeshProUGUI. </summary>
     public void UpdateDistance()
-    {
-        // Calculate new distance.
-        StaticValues.distanceCovered = StaticValues.distanceCovered + StaticValues.distanceIncrease;
-
+    {        
         // Set new distance in playerUI.
         if (!isCoroutineExecuting)
         {
+            // Calculate new distance.
+            StaticValues.distanceCovered = StaticValues.distanceCovered + StaticValues.distanceIncrease;
+
+            // Set new distance.
             StartCoroutine(IncrementDistanceText(StaticValues.distanceCovered));
         }           
     }

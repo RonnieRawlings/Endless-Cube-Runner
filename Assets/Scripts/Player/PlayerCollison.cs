@@ -8,7 +8,8 @@ public class PlayerCollison : MonoBehaviour
 {
     private void OnCollisionEnter(Collision collision)
     {
+        // Pauses game, enables game over screen.s
         Time.timeScale = 0.0f;
-        Debug.Log("Player Collision");
+        GameObject.Find("PlayerUI").transform.Find("EndScreen").gameObject.SetActive(true);
     }
 }
