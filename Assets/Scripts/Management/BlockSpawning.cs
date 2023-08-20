@@ -40,7 +40,10 @@ public class BlockSpawning : MonoBehaviour
 
         // Spawn your object at the desired position
         Vector3 spawnPosition = new Vector3(x, 7f, 700f);
-        var prefabCube = Resources.Load<GameObject>("Prefabs/MovingBlock (Standard)");
+
+        // Load all prefabs in the specified folder
+        var prefabs = Resources.LoadAll<GameObject>("Prefabs/Blocks");
+        var prefabCube = prefabs[1];
         Instantiate(prefabCube, spawnPosition, Quaternion.identity);
     }
 
