@@ -2,10 +2,18 @@
 
 using System.Collections;
 using System.Collections.Generic;
+using TMPro.Examples;
 using UnityEngine;
 
 public class BlockSpawning : MonoBehaviour
 {
+    // Dictates which block is spawned in.
+    private int blockSpawnIndex = 0;
+
+    // Blocks that can be spawned in.
+    [SerializeField] private GameObject[] prefabBlocks;
+    [SerializeField] private int previousValueToHit = 1000;
+
     /// <summary> method <c>DebugCameraField</c> Places markers where the camera bounds are, shows spawning zone. </summary>
     public void DebugCameraField(float minX, float maxX)
     {
@@ -22,6 +30,22 @@ public class BlockSpawning : MonoBehaviour
         GameObject secondMarker = Instantiate(prefabCameraMarker, new Vector3(maxX, 7f, 150f), Quaternion.identity);
         firstMarker.tag = "Marker";
         secondMarker.tag = "Marker";
+    }
+
+    /// <summary> method <c>IterateBlockIndex</c> Increases the needed distance milstone in accordance with players covered distance. </summary>
+    public void IterateBlockIndex()
+    {
+        // When player has travlled another 1K meters, change block type.
+        if (StaticValues.distanceCovered >= previousValueToHit)
+        {
+            previousValueToHit += 1000;
+
+            // Only changes index if block is available.
+            if (blockSpawnIndex + 1 < prefabBlocks.Length)
+            {
+                blockSpawnIndex++;
+            }            
+        }
     }
 
     /// <summary> method <c>SpawnObject</c> Uses the current camera world position to spawn an object at the edge of the floor. </summary>
@@ -41,9 +65,11 @@ public class BlockSpawning : MonoBehaviour
         // Spawn your object at the desired position
         Vector3 spawnPosition = new Vector3(x, 7f, 700f);
 
+        // Check current block index.
+        IterateBlockIndex();
+
         // Load all prefabs in the specified folder
-        var prefabs = Resources.LoadAll<GameObject>("Prefabs/Blocks");
-        var prefabCube = prefabs[1];
+        var prefabCube = prefabBlocks[blockSpawnIndex];
         Instantiate(prefabCube, spawnPosition, Quaternion.identity);
     }
 
@@ -61,6 +87,9 @@ public class BlockSpawning : MonoBehaviour
     // Start is called before the first frame update
     void Start()
     {
+        // Fills array with whole block folder.
+        prefabBlocks = Resources.LoadAll<GameObject>("Prefabs/Blocks");
+
         // Begins the  spawing of cube (standard) objs.
         StartCoroutine(ManageObjectSpawning());
     }
