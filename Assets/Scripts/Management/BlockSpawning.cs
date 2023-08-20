@@ -8,11 +8,13 @@ using UnityEngine;
 public class BlockSpawning : MonoBehaviour
 {
     // Dictates which block is spawned in.
-    private int blockSpawnIndex = 0;
+    private int blockSpawnIndex = 0, previousBlockTypeValue = 1000;
+
+    // Iterate move speed value.
+    private int previousMoveSpeedValue = 500;
 
     // Blocks that can be spawned in.
     [SerializeField] private GameObject[] prefabBlocks;
-    [SerializeField] private int previousValueToHit = 1000;
 
     /// <summary> method <c>DebugCameraField</c> Places markers where the camera bounds are, shows spawning zone. </summary>
     public void DebugCameraField(float minX, float maxX)
@@ -32,13 +34,24 @@ public class BlockSpawning : MonoBehaviour
         secondMarker.tag = "Marker";
     }
 
+    /// <summary> method <c>IterateBlockMoveSpeed</c> Updates block move speed when 500m intervals are achieved.
+    public void IterateBlockMoveSpeed()
+    {
+        // Increase move speed by 25 when 500m travelled.
+        if (StaticValues.distanceCovered >= previousMoveSpeedValue)
+        {
+            previousMoveSpeedValue += 500;
+            StaticValues.blockMoveSpeed += 25;
+        }
+    }
+
     /// <summary> method <c>IterateBlockIndex</c> Increases the needed distance milstone in accordance with players covered distance. </summary>
     public void IterateBlockIndex()
     {
         // When player has travlled another 1K meters, change block type.
-        if (StaticValues.distanceCovered >= previousValueToHit)
+        if (StaticValues.distanceCovered >= previousBlockTypeValue)
         {
-            previousValueToHit += 1000;
+            previousBlockTypeValue += 1000;
 
             // Only changes index if block is available.
             if (blockSpawnIndex + 1 < prefabBlocks.Length)
@@ -76,6 +89,9 @@ public class BlockSpawning : MonoBehaviour
     /// <summary> interface <c>ManageObjectSpawning</c> Spawns a new cube (enemy) obj every 4 seconds. </summary>
     public IEnumerator ManageObjectSpawning()
     {
+        // Increases block move speed IF distance reached.
+        IterateBlockMoveSpeed();
+
         // Waits then spawns a cube at random position.
         yield return new WaitForSeconds(0.075f);
         SpawnObject();

@@ -7,7 +7,14 @@ using UnityEngine;
 public class BlockMovement : MonoBehaviour
 {
     // Movement variables, move speed.
-    private float speed = 50; 
+    [SerializeField] private float speed;
+
+    // Called on script initlization.
+    private void Awake()
+    {
+        // Adjust movement speed.
+        speed = StaticValues.blockMoveSpeed;
+    }
 
     // Update is called once per frame
     void FixedUpdate()
