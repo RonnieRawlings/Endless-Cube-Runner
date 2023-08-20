@@ -13,11 +13,11 @@ public class CameraRotation : MonoBehaviour
     {
         Quaternion targetRotation;
         float lerpSpeed = 5f; // Increase this value to make the rotation faster
-        if (Input.GetKey(KeyCode.A))
+        if (Input.GetKey(KeyCode.A) || Input.GetKey(KeyCode.LeftArrow))
         {
             targetRotation = Quaternion.Euler(transform.rotation.eulerAngles.x, transform.rotation.eulerAngles.y, 10f);
         }
-        else if (Input.GetKey(KeyCode.D))
+        else if (Input.GetKey(KeyCode.D) || Input.GetKey(KeyCode.RightArrow))
         {
             targetRotation = Quaternion.Euler(transform.rotation.eulerAngles.x, transform.rotation.eulerAngles.y, -10f);
         }
@@ -39,7 +39,7 @@ public class CameraRotation : MonoBehaviour
     }
 
     // Update is called once per frame
-    void Update()
+    void FixedUpdate()
     {
         ChangeCameraRotation();
     }      
