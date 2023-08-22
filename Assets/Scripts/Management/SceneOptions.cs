@@ -7,6 +7,17 @@ using UnityEngine.SceneManagement;
 
 public class SceneOptions : MonoBehaviour
 {
+    /// <summary> method <c>PlayGame</c> Disables startMenu, unpauses game, & begins spawning. </summary>
+    public void PlayGame()
+    {
+        // Un-pauses game, disables start menu.
+        Time.timeScale = 1.0f;
+        GameObject.Find("PlayerUI").transform.Find("StartScreen").gameObject.SetActive(false);
+
+        // Prevents screen re-appearing.    
+        StaticValues.hasStartedOnce = true;
+    }
+
     /// <summary> method <c>LoadScene</c> Takes a given scene name, loads that scene. </summary>
     public void LoadScene(string sceneName)
     {

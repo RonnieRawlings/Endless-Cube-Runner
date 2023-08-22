@@ -46,11 +46,24 @@ public class Management : MonoBehaviour
         }           
     }
 
+    // Called on script initlization.
+    private void Awake()
+    {
+        // Prevents game from starting early.
+        if (!StaticValues.hasStartedOnce) 
+        { 
+            Time.timeScale = 0.0f;
+        }
+        else
+        {
+            // If game has started once, disable start screen.
+            playerUIDistance.transform.parent.Find("StartScreen").gameObject.SetActive(false);
+        }
+    }
+
     // Update is called once per frame
     void Update()
     {
         UpdateDistance();
     }
 }
-
-
