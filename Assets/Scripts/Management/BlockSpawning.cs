@@ -82,6 +82,16 @@ public class BlockSpawning : MonoBehaviour
         // Spawn your object at the desired position
         Vector3 spawnPosition = new Vector3(x, 7f, 700f);
 
+        // Check if the spawn position is already occupied
+        Collider[] hitColliders = Physics.OverlapSphere(spawnPosition, 5f);
+        while (hitColliders.Length > 0)
+        {
+            // Generate a new random x value within the range
+            x = Random.Range(minX, maxX);
+            spawnPosition = new Vector3(x, 7f, 700f);
+            hitColliders = Physics.OverlapSphere(spawnPosition, 5f);
+        }
+
         // Check current block index.
         IterateBlockIndex();
 
@@ -97,7 +107,7 @@ public class BlockSpawning : MonoBehaviour
         IterateBlockMoveSpeed();
 
         // Waits then spawns a cube at random position.
-        yield return new WaitForSeconds(0.075f);
+        yield return new WaitForSeconds(0.03f);
         SpawnObject();
 
         // Re-calls this routine.
