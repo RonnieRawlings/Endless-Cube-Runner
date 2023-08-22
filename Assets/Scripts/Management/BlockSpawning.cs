@@ -40,8 +40,12 @@ public class BlockSpawning : MonoBehaviour
         // Increase move speed by 25 when 500m travelled.
         if (StaticValues.distanceCovered >= previousMoveSpeedValue)
         {
+            // Sets next travel milestone.
             previousMoveSpeedValue += 500;
-            StaticValues.blockMoveSpeed += 25;
+
+            // Increases static values.
+            StaticValues.blockMoveSpeed += 50;
+            StaticValues.distanceIncrease += 10;
         }
     }
 
@@ -65,8 +69,8 @@ public class BlockSpawning : MonoBehaviour
     public void SpawnObject()
     {
         // Get the left and right edges of the camera's view
-        Vector3 leftEdge = Camera.main.ViewportToWorldPoint(new Vector3(0, 0, 800));
-        Vector3 rightEdge = Camera.main.ViewportToWorldPoint(new Vector3(1, 0, 800));
+        Vector3 leftEdge = Camera.main.ViewportToWorldPoint(new Vector3(0, 0, 650));
+        Vector3 rightEdge = Camera.main.ViewportToWorldPoint(new Vector3(1, 0, 650));
 
         // Calculate the range of possible x values
         float minX = leftEdge.x;

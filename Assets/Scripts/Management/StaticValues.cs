@@ -17,6 +17,6 @@ public static class StaticValues
     {
         distanceCovered = 0;
         distanceIncrease = 20;
-        blockMoveSpeed = 50;
+        blockMoveSpeed = 100;
     }
 }
