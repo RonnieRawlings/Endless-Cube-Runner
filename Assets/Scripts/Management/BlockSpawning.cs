@@ -97,7 +97,10 @@ public class BlockSpawning : MonoBehaviour
 
         // Load all prefabs in the specified folder
         var prefabCube = prefabBlocks[blockSpawnIndex];
-        Instantiate(prefabCube, spawnPosition, Quaternion.identity);
+        GameObject newCube = Instantiate(prefabCube, spawnPosition, Quaternion.identity);
+
+        // Allows obj to be easily identifyed.
+        newCube.tag = "Block";
     }
 
     /// <summary> interface <c>ManageObjectSpawning</c> Spawns a new cube (enemy) obj every 4 seconds. </summary>
