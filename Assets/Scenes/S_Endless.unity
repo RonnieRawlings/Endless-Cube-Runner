@@ -243,6 +243,17 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 11601818ada96f94bb2e4dac0a03041f, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  playerTransform: {fileID: 239382794}
+--- !u!1 &239382787 stripped
+GameObject:
+  m_CorrespondingSourceObject: {fileID: 257336598775233526, guid: 1abb6a43ed4f30242a1ac18e9db3fe28, type: 3}
+  m_PrefabInstance: {fileID: 8422521246379650476}
+  m_PrefabAsset: {fileID: 0}
+--- !u!4 &239382794 stripped
+Transform:
+  m_CorrespondingSourceObject: {fileID: 4169114893663229259, guid: 1abb6a43ed4f30242a1ac18e9db3fe28, type: 3}
+  m_PrefabInstance: {fileID: 8422521246379650476}
+  m_PrefabAsset: {fileID: 0}
 --- !u!1 &359071816
 GameObject:
   m_ObjectHideFlags: 0
@@ -433,6 +444,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 477e1acc923d7424494dc894c592047f, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  playerTransform: {fileID: 239382794}
   smoothTime: 0.125
 --- !u!114 &563482516
 MonoBehaviour:
@@ -6406,7 +6418,7 @@ GameObject:
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
-  m_IsActive: 1
+  m_IsActive: 0
 --- !u!224 &1443844611
 RectTransform:
   m_ObjectHideFlags: 0
@@ -7365,6 +7377,10 @@ PrefabInstance:
       value: GameManager
       objectReference: {fileID: 0}
     - target: {fileID: 2480565024152619844, guid: d9b3a064ffb9166419dc0c8ad86a186f, type: 3}
+      propertyPath: playerModel
+      value: 
+      objectReference: {fileID: 239382787}
+    - target: {fileID: 2480565024152619844, guid: d9b3a064ffb9166419dc0c8ad86a186f, type: 3}
       propertyPath: playerUIDistance
       value: 
       objectReference: {fileID: 1443844612}
@@ -7412,6 +7428,14 @@ PrefabInstance:
       propertyPath: m_LocalEulerAnglesHint.z
       value: 0
       objectReference: {fileID: 0}
+    - target: {fileID: 4805779328212141735, guid: d9b3a064ffb9166419dc0c8ad86a186f, type: 3}
+      propertyPath: playerUI
+      value: 
+      objectReference: {fileID: 2032382545}
+    - target: {fileID: 4805779328212141735, guid: d9b3a064ffb9166419dc0c8ad86a186f, type: 3}
+      propertyPath: playerModel
+      value: 
+      objectReference: {fileID: 239382787}
     m_RemovedComponents: []
     m_RemovedGameObjects: []
     m_AddedGameObjects: []
@@ -7439,6 +7463,10 @@ PrefabInstance:
     - target: {fileID: 257336598775233526, guid: 1abb6a43ed4f30242a1ac18e9db3fe28, type: 3}
       propertyPath: m_Name
       value: PlayerModel
+      objectReference: {fileID: 0}
+    - target: {fileID: 257336598775233526, guid: 1abb6a43ed4f30242a1ac18e9db3fe28, type: 3}
+      propertyPath: m_IsActive
+      value: 0
       objectReference: {fileID: 0}
     - target: {fileID: 2801715431670257355, guid: 1abb6a43ed4f30242a1ac18e9db3fe28, type: 3}
       propertyPath: m_Mesh

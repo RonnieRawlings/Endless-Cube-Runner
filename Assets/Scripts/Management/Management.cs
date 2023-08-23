@@ -10,6 +10,9 @@ public class Management : MonoBehaviour
     // UI Element, current distance player has travelled.
     [SerializeField] private TextMeshProUGUI playerUIDistance;
 
+    // Player model referance.
+    [SerializeField] private GameObject playerModel;
+
     // Prevents incrementing playerUI value multiple times.
     private bool isCoroutineExecuting = false;
 
@@ -49,21 +52,22 @@ public class Management : MonoBehaviour
     // Called on script initlization.
     private void Awake()
     {
-        // Prevents game from starting early.
-        if (!StaticValues.hasStartedOnce) 
+        // If game has started once, disable start screen + enable elements.
+        if (StaticValues.hasStartedOnce) 
         { 
-            Time.timeScale = 0.0f;
-        }
-        else
-        {
-            // If game has started once, disable start screen.
+            // Disables start screen.
             playerUIDistance.transform.parent.Find("StartScreen").gameObject.SetActive(false);
-        }
+
+            // Enables player + elements.
+            playerModel.SetActive(true);
+            playerUIDistance.gameObject.SetActive(true);
+        }          
     }
 
     // Update is called once per frame
     void Update()
     {
-        UpdateDistance();
+        // Updates the count when player is active.
+        if (playerUIDistance.IsActive()) { UpdateDistance(); }        
     }
 }

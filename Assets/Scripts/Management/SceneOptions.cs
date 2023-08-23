@@ -7,12 +7,17 @@ using UnityEngine.SceneManagement;
 
 public class SceneOptions : MonoBehaviour
 {
+    [SerializeField] private GameObject playerModel, playerUI;
+
     /// <summary> method <c>PlayGame</c> Disables startMenu, unpauses game, & begins spawning. </summary>
     public void PlayGame()
     {
-        // Un-pauses game, disables start menu.
-        Time.timeScale = 1.0f;
-        GameObject.Find("PlayerUI").transform.Find("StartScreen").gameObject.SetActive(false);
+        // Enables player + distance tracker.
+        playerModel.SetActive(true);
+        playerUI.transform.Find("DistanceCoveredText").gameObject.SetActive(true);
+        
+        // Disables start menu.
+        playerUI.transform.Find("StartScreen").gameObject.SetActive(false);
 
         // Prevents screen re-appearing.    
         StaticValues.hasStartedOnce = true;
