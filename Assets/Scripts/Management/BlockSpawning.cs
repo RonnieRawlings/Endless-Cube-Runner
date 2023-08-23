@@ -69,26 +69,31 @@ public class BlockSpawning : MonoBehaviour
     public void SpawnObject()
     {
         // Get the left and right edges of the camera's view
-        Vector3 leftEdge = Camera.main.ViewportToWorldPoint(new Vector3(0, 0, 650));
-        Vector3 rightEdge = Camera.main.ViewportToWorldPoint(new Vector3(1, 0, 650));
+        Vector3 leftEdge = Camera.main.ViewportToWorldPoint(new Vector3(0, 0, 400));
+        Vector3 rightEdge = Camera.main.ViewportToWorldPoint(new Vector3(1, 0, 400));
 
         // Calculate the range of possible x values
         float minX = leftEdge.x;
         float maxX = rightEdge.x;
-
-        // Generate a random x value within the range
         float x = Random.Range(minX, maxX);
 
+        // Calculatre the range of possible z values.
+        float minZ = 300f;
+        float maxZ = 600f;
+        float z = Random.Range(minZ, maxZ);
+
         // Spawn your object at the desired position
-        Vector3 spawnPosition = new Vector3(x, 7f, 700f);
+        Vector3 spawnPosition = new Vector3(x, 7f, z);
 
         // Check if the spawn position is already occupied
         Collider[] hitColliders = Physics.OverlapSphere(spawnPosition, 5f);
         while (hitColliders.Length > 0)
         {
-            // Generate a new random x value within the range
+            // Generate a new random spawn pos.
             x = Random.Range(minX, maxX);
-            spawnPosition = new Vector3(x, 7f, 700f);
+            z = Random.Range(minZ, maxZ);
+
+            spawnPosition = new Vector3(x, 7f, z);
             hitColliders = Physics.OverlapSphere(spawnPosition, 5f);
         }
 
@@ -110,7 +115,7 @@ public class BlockSpawning : MonoBehaviour
         IterateBlockMoveSpeed();
 
         // Waits then spawns a cube at random position.
-        yield return new WaitForSeconds(0.03f);
+        yield return new WaitForSeconds(0.08f);
         SpawnObject();
 
         // Re-calls this routine.
