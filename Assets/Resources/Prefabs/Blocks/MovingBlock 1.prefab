@@ -15,7 +15,7 @@ GameObject:
   - component: {fileID: 3150290291264617761}
   - component: {fileID: 7407574689711636260}
   m_Layer: 0
-  m_Name: MovingBlock (Standard)
+  m_Name: MovingBlock 1
   m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0

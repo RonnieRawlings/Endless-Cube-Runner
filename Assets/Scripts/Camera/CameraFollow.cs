@@ -7,17 +7,11 @@ using UnityEngine;
 public class CameraFollow : MonoBehaviour
 {
     // Object to follow + velocity ref.
-    private Transform playerTransform;
+    [SerializeField] private Transform playerTransform;
     private Vector3 velocity = Vector3.zero;
 
     // Movement fields, delay speed.
     [SerializeField] private float smoothTime;
-
-    // Called on script initlization.
-    void Awake()
-    {
-        playerTransform = GameObject.Find("PlayerModel").GetComponent<Transform>();
-    }
 
     // Called once every frame, just after update.
     void FixedUpdate()

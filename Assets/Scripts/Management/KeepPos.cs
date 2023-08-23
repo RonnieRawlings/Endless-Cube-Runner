@@ -7,13 +7,7 @@ using UnityEngine;
 public class KeepPos : MonoBehaviour
 {
     // Provides access to the player model pos.
-    private Transform playerTransform;
-
-    // Called once on script initilization.
-    void Awake()
-    {
-        playerTransform = GameObject.Find("PlayerModel").GetComponent<Transform>();
-    }
+    [SerializeField] private Transform playerTransform;
 
     // Called once per fixed frame.
     void FixedUpdate()

@@ -6,5 +6,20 @@ using UnityEngine;
 
 public static class StaticValues
 {
+    // Start game values, prevents startScreen re-appearing.
+    public static bool hasStartedOnce = false;
+
+    // Distance values, travel amount + travel speed.
     public static int distanceCovered = 0, distanceIncrease = 20;
+
+    // Block movement values.
+    public static int blockMoveSpeed = 100;
+
+    /// <summary> static method <c>ResetValues</c> Returns all script values to orginal state. </summary>
+    public static void ResetValues()
+    {
+        distanceCovered = 0;
+        distanceIncrease = 20;
+        blockMoveSpeed = 100;
+    }
 }
