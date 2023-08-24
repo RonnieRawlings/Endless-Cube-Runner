@@ -86,7 +86,7 @@ public class BlockSpawning : MonoBehaviour
         Vector3 spawnPosition = new Vector3(x, 7f, z);
 
         // Check if the spawn position is already occupied
-        Collider[] hitColliders = Physics.OverlapSphere(spawnPosition, 5f);
+        Collider[] hitColliders = Physics.OverlapSphere(spawnPosition, 8f);
         while (hitColliders.Length > 0)
         {
             // Generate a new random spawn pos.
@@ -94,7 +94,7 @@ public class BlockSpawning : MonoBehaviour
             z = Random.Range(minZ, maxZ);
 
             spawnPosition = new Vector3(x, 7f, z);
-            hitColliders = Physics.OverlapSphere(spawnPosition, 5f);
+            hitColliders = Physics.OverlapSphere(spawnPosition, 8f);
         }
 
         // Check current block index.
