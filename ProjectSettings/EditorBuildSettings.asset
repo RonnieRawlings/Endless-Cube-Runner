@@ -4,5 +4,8 @@
 EditorBuildSettings:
   m_ObjectHideFlags: 0
   serializedVersion: 2
-  m_Scenes: []
+  m_Scenes:
+  - enabled: 1
+    path: Assets/Scenes/S_Endless.unity
+    guid: 4df5a4a379c9f5843a11edb7130038ff
   m_configObjects: {}

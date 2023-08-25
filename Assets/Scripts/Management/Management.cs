@@ -66,6 +66,8 @@ public class Management : MonoBehaviour
 
     void Start()
     {
+        
+
         // Sets player highscore to start screen.
         playerUIDistance.transform.parent.GetChild(1).Find("ScoreText").GetComponent<TextMeshProUGUI>().text = 
             "Highscore - " + StaticValues.playerHighscore.ToString() + "m";
@@ -75,6 +77,6 @@ public class Management : MonoBehaviour
     void Update()
     {
         // Updates the count when player is active.
-        if (playerUIDistance.IsActive()) { UpdateDistance(); }        
+        if (playerUIDistance.IsActive()) { UpdateDistance(); }
     }
 }
