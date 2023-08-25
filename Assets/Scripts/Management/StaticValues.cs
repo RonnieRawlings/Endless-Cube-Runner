@@ -21,12 +21,17 @@ public static class StaticValues
     // Loaded material folder.
     public static Dictionary<int, Material[]> loadedMaterials;
 
+    // Player highscore, saved using playerprefs.
+    public static int playerHighscore;
 
     /// <summary> constructor <c>StaticValues</c> Sets up variables on scene load. </summary>
     static StaticValues() 
     {
         // Loads environment materials from resources.
         SetUpMaterials();
+
+        // Loads highscore.
+        playerHighscore = PlayerPrefs.GetInt("playerHighscore");
     }
 
     /// <summary> static method <c>SetUpMaterials</c> Fills the dictionary with environemnt indexs + materials. </summary>
@@ -37,6 +42,12 @@ public static class StaticValues
         {
             loadedMaterials.Add(folderAmount, Resources.LoadAll<Material>("Materialss/" + folderAmount.ToString()));
         }
+    }
+
+    /// <summary> static method <c>SaveValues</c> Uses Unity player prefs to save values. </summary>
+    public static void SaveValues()
+    {
+        PlayerPrefs.SetInt("playerHighscore", playerHighscore);
     }
 
     /// <summary> static method <c>ResetValues</c> Returns all script values to orginal state. </summary>

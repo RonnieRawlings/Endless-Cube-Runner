@@ -51,7 +51,7 @@ public class Management : MonoBehaviour
 
     // Called on script initlization.
     private void Awake()
-    {
+    {       
         // If game has started once, disable start screen + enable elements.
         if (StaticValues.hasStartedOnce) 
         { 
@@ -62,6 +62,13 @@ public class Management : MonoBehaviour
             playerModel.SetActive(true);
             playerUIDistance.gameObject.SetActive(true);
         }          
+    }
+
+    void Start()
+    {
+        // Sets player highscore to start screen.
+        playerUIDistance.transform.parent.GetChild(1).Find("ScoreText").GetComponent<TextMeshProUGUI>().text = 
+            "Highscore - " + StaticValues.playerHighscore.ToString() + "m";
     }
 
     // Update is called once per frame
