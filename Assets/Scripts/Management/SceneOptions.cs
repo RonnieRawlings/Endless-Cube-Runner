@@ -37,6 +37,10 @@ public class SceneOptions : MonoBehaviour
     /// <summary> method <c>QuitGame</c> Exits the application, used for button presses. </summary>
     public void QuitGame()
     {
+        // Saves highscore to playerprefs.
+        StaticValues.SaveValues();
+        
+        // Closes the application.
         Application.Quit();
     }
 }
