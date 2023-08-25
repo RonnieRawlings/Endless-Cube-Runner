@@ -2,6 +2,9 @@
 
 using System.Collections;
 using System.Collections.Generic;
+using System.Globalization;
+using System.Resources;
+using Unity.VisualScripting;
 using UnityEngine;
 
 public static class StaticValues
@@ -16,12 +19,24 @@ public static class StaticValues
     public static int blockMoveSpeed = 100;
 
     // Loaded material folder.
-    public static Material[] loadedMaterials;
+    public static Dictionary<int, Material[]> loadedMaterials;
+
 
     /// <summary> constructor <c>StaticValues</c> Sets up variables on scene load. </summary>
     static StaticValues() 
     {
-        loadedMaterials = Resources.LoadAll<Material>("Materialss");
+        // Loads environment materials from resources.
+        SetUpMaterials();
+    }
+
+    /// <summary> static method <c>SetUpMaterials</c> Fills the dictionary with environemnt indexs + materials. </summary>
+    public static void SetUpMaterials()
+    {
+        loadedMaterials = new Dictionary<int, Material[]>();
+        for (int folderAmount = 0; folderAmount < 3; folderAmount++)
+        {
+            loadedMaterials.Add(folderAmount, Resources.LoadAll<Material>("Materialss/" + folderAmount.ToString()));
+        }
     }
 
     /// <summary> static method <c>ResetValues</c> Returns all script values to orginal state. </summary>
