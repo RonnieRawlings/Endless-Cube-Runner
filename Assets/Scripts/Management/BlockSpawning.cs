@@ -106,6 +106,7 @@ public class BlockSpawning : MonoBehaviour
 
         // Allows obj to be easily identifyed.
         newCube.tag = "Block";
+        newCube.GetComponent<BoxCollider>().isTrigger = true;
     }
 
     /// <summary> interface <c>ManageObjectSpawning</c> Spawns a new cube (enemy) obj every 4 seconds. </summary>
