@@ -135,6 +135,7 @@ GameObject:
   - component: {fileID: 1922240}
   - component: {fileID: 1922239}
   - component: {fileID: 1922242}
+  - component: {fileID: 1922243}
   m_Layer: 0
   m_Name: BaseFloor
   m_TagString: Untagged
@@ -221,6 +222,18 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   playerTransform: {fileID: 239382794}
+--- !u!114 &1922243
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1922237}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 7cdc264d18f97bb47bd2bff231092a06, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
 --- !u!1 &239382787 stripped
 GameObject:
   m_CorrespondingSourceObject: {fileID: 257336598775233526, guid: 1abb6a43ed4f30242a1ac18e9db3fe28, type: 3}

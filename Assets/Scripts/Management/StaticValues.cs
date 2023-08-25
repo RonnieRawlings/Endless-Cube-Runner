@@ -15,6 +15,15 @@ public static class StaticValues
     // Block movement values.
     public static int blockMoveSpeed = 100;
 
+    // Loaded material folder.
+    public static Material[] loadedMaterials;
+
+    /// <summary> constructor <c>StaticValues</c> Sets up variables on scene load. </summary>
+    static StaticValues() 
+    {
+        loadedMaterials = Resources.LoadAll<Material>("Materialss");
+    }
+
     /// <summary> static method <c>ResetValues</c> Returns all script values to orginal state. </summary>
     public static void ResetValues()
     {
