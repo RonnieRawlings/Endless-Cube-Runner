@@ -33,7 +33,7 @@ public static class StaticValues
     public static void SetUpMaterials()
     {
         loadedMaterials = new Dictionary<int, Material[]>();
-        for (int folderAmount = 0; folderAmount < 3; folderAmount++)
+        for (int folderAmount = 0; folderAmount < 4; folderAmount++)
         {
             loadedMaterials.Add(folderAmount, Resources.LoadAll<Material>("Materialss/" + folderAmount.ToString()));
         }

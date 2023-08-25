@@ -235,6 +235,8 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   collection: []
+  environmentIndex: 0
+  lastInterval: 250
 --- !u!1 &239382787 stripped
 GameObject:
   m_CorrespondingSourceObject: {fileID: 257336598775233526, guid: 1abb6a43ed4f30242a1ac18e9db3fe28, type: 3}
@@ -2251,7 +2253,7 @@ Transform:
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 2117659234}
   m_LocalRotation: {x: -0.5, y: -0.5, z: 0.5, w: 0.5}
-  m_LocalPosition: {x: 0, y: 330.5055, z: 3.39}
+  m_LocalPosition: {x: 0, y: 330.5055, z: 3.03}
   m_LocalScale: {x: 100, y: 0.5, z: 1}
   m_ConstrainProportionsScale: 0
   m_Children: []
