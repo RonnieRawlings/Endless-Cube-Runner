@@ -19,6 +19,9 @@ public class BlockMovement : MonoBehaviour
     // Update is called once per frame
     void FixedUpdate()
     {
+        // Keeps moveSpeed up to date.
+        speed = StaticValues.blockMoveSpeed;
+
         // Once spawned in, move block across the plane.
         transform.Translate(Vector3.back * Time.deltaTime * speed);
     }
