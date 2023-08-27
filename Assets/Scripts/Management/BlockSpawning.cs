@@ -65,6 +65,21 @@ public class BlockSpawning : MonoBehaviour
         }
     }
 
+    /// <summary> interface <c>FadeIn</c> Slowly makes a given obj visible. </summary>
+    public IEnumerator FadeIn(GameObject obj, float duration)
+    {
+        float elapsedTime = 0f;
+        Material material = obj.GetComponent<Renderer>().material;
+        Color color = material.color;
+        while (elapsedTime < duration)
+        {
+            elapsedTime += Time.deltaTime;
+            color.a = Mathf.Lerp(0, 1, elapsedTime / duration);
+            material.color = color;
+            yield return null;
+        }
+    }
+
     /// <summary> method <c>SpawnObject</c> Uses the current camera world position to spawn an object at the edge of the floor. </summary>
     public void SpawnObject()
     {
@@ -103,6 +118,9 @@ public class BlockSpawning : MonoBehaviour
         // Load all prefabs in the specified folder
         var prefabCube = prefabBlocks[blockSpawnIndex];
         GameObject newCube = Instantiate(prefabCube, spawnPosition, Quaternion.identity);
+
+        // Fades the object into view.
+        StartCoroutine(FadeIn(newCube, 0.75f));
 
         // Allows obj to be easily identifyed.
         newCube.tag = "Block";
