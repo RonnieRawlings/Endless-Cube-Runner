@@ -15,8 +15,8 @@ public static class StaticValues
     // Distance values, travel amount + travel speed.
     public static int distanceCovered = 0, distanceIncrease = 20;
 
-    // Block movement values.
-    public static int blockMoveSpeed = 100;
+    // Movement values.
+    public static int blockMoveSpeed = 100, playerMoveSpeed = 60;
 
     // Loaded material folder.
     public static Dictionary<int, Material[]> loadedMaterials;
@@ -56,5 +56,6 @@ public static class StaticValues
         distanceCovered = 0;
         distanceIncrease = 20;
         blockMoveSpeed = 100;
+        playerMoveSpeed = 60;
     }
 }

@@ -45,6 +45,7 @@ public class BlockSpawning : MonoBehaviour
 
             // Increases static values.
             StaticValues.blockMoveSpeed += 50;
+            StaticValues.playerMoveSpeed += 15;
             StaticValues.distanceIncrease += 10;
         }
     }
