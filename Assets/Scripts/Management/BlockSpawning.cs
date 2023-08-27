@@ -93,7 +93,7 @@ public class BlockSpawning : MonoBehaviour
         float x = Random.Range(minX, maxX);
 
         // Calculatre the range of possible z values.
-        float minZ = 300f;
+        float minZ = 450f;
         float maxZ = 600f;
         float z = Random.Range(minZ, maxZ);
 
