@@ -61,6 +61,13 @@ public class Management : MonoBehaviour
             // Enables player + elements.
             playerModel.SetActive(true);
             playerUIDistance.gameObject.SetActive(true);
+
+            // Enables quick start mode IF value true.
+            if (StaticValues.shouldQuickStart) 
+            { 
+                GetComponent<SceneOptions>().QuickStart();
+                StaticValues.shouldQuickStart = false;
+            }
         }          
     }
 

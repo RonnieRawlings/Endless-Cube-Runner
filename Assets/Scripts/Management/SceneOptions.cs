@@ -23,6 +23,12 @@ public class SceneOptions : MonoBehaviour
         StaticValues.hasStartedOnce = true;
     }
 
+    /// <summary> method <c>ToggleQuickStart</c> Used to toggle static variable, quicks starts game next load. </summary>
+    public void ToggleQuickStart()
+    {
+        StaticValues.shouldQuickStart = true;
+    }
+
     /// <summary> method <c>QuickStart</c> Starts the QuickStart coroutine from button press. </summary>
     public void QuickStart()
     {

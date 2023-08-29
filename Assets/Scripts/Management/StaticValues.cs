@@ -9,8 +9,8 @@ using UnityEngine;
 
 public static class StaticValues
 {
-    // Start game values, prevents startScreen re-appearing.
-    public static bool hasStartedOnce = false;
+    // Start game values, prevents startScreen re-appearing + check for quick start.
+    public static bool hasStartedOnce = false, shouldQuickStart = false;
 
     // Distance values, travel amount + travel speed.
     public static int distanceCovered = 0, distanceIncrease = 20;
