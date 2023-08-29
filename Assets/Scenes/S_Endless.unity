@@ -445,7 +445,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   playerTransform: {fileID: 239382794}
-  smoothTime: 0.075
+  smoothTime: 0.01
 --- !u!114 &563482516
 MonoBehaviour:
   m_ObjectHideFlags: 0
