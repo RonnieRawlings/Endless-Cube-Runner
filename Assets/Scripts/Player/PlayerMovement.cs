@@ -7,11 +7,15 @@ using UnityEngine.InputSystem;
 
 public class PlayerMovement : MonoBehaviour
 {
+    public float smoothTime = 0.00001F;
+    private Vector3 velocity = Vector3.zero;
+
     /// <summary> method <c>BasicMovement</c> Allows the user to use the horizontal set keys to move the player char. </summary>
     public void BasicMovement()
     {
         float horizontalInput = Input.GetAxis("Horizontal");
-        transform.Translate(Vector3.right * horizontalInput * Time.deltaTime * StaticValues.playerMoveSpeed);
+        Vector3 targetPosition = transform.position + Vector3.right * horizontalInput * Time.deltaTime * StaticValues.playerMoveSpeed;
+        transform.position = Vector3.SmoothDamp(transform.position, targetPosition, ref velocity, smoothTime);
     }
 
     /// <summary> method <c>SetRotation</c> Resets pos axis and aligns rotation with main camera. </summary>

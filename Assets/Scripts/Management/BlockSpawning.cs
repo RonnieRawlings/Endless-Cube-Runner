@@ -45,7 +45,7 @@ public class BlockSpawning : MonoBehaviour
 
             // Increases static values.
             StaticValues.blockMoveSpeed += 50;
-            StaticValues.playerMoveSpeed += 15;
+            StaticValues.playerMoveSpeed += 200;
             StaticValues.distanceIncrease += 10;
         }
     }
@@ -70,7 +70,20 @@ public class BlockSpawning : MonoBehaviour
     public IEnumerator FadeIn(GameObject obj, float duration)
     {
         float elapsedTime = 0f;
-        Material material = obj.GetComponent<Renderer>().material;
+
+        Material material;
+        if (obj.GetComponent<Renderer>() == null)
+        {
+            // Prevents renderer errors.
+            material = obj.transform.GetChild(0).GetComponent<Renderer>().material;
+            StartCoroutine(FadeIn(obj.transform.GetChild(1).gameObject, duration));
+        }
+        else
+        {
+            material = obj.GetComponent<Renderer>().material;
+        }
+
+        // Fades in the objects marterial, starts transparent.
         Color color = material.color;
         while (elapsedTime < duration)
         {

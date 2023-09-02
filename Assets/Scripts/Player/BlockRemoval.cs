@@ -7,11 +7,8 @@ using UnityEngine;
 public class BlockRemoval : MonoBehaviour
 {
     /// <summary> method <c>BlockDestroy</c> Uses an OverlapSphere to remove all blocks within a set radius. </summary>
-    public void BlockDestroy()
+    public void BlockDestroy(float radius)
     {
-        // Radius of the OverlapSphere
-        float radius = 100f;
-
         // Find all colliders that intersect with the OverlapSphere
         Collider[] hitColliders = Physics.OverlapSphere(transform.position, radius);
 
@@ -30,10 +27,10 @@ public class BlockRemoval : MonoBehaviour
     // Called once on object enable.
     void OnEnable()
     {
-        BlockDestroy();
+        BlockDestroy(100.0f);
     }
 
-    public float radius = 50f; // Radius of the OverlapSphere
+    public float radius = 100.0f; // Radius of the OverlapSphere
 
     void OnDrawGizmos()
     {

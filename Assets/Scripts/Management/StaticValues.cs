@@ -9,14 +9,14 @@ using UnityEngine;
 
 public static class StaticValues
 {
-    // Start game values, prevents startScreen re-appearing.
-    public static bool hasStartedOnce = false;
+    // Start game values, prevents startScreen re-appearing + check for quick start.
+    public static bool hasStartedOnce = false, shouldQuickStart = false;
 
     // Distance values, travel amount + travel speed.
     public static int distanceCovered = 0, distanceIncrease = 20;
 
     // Movement values.
-    public static int blockMoveSpeed = 100, playerMoveSpeed = 60;
+    public static int blockMoveSpeed = 100, playerMoveSpeed = 600;
 
     // Loaded material folder.
     public static Dictionary<int, Material[]> loadedMaterials;
@@ -56,6 +56,6 @@ public static class StaticValues
         distanceCovered = 0;
         distanceIncrease = 20;
         blockMoveSpeed = 100;
-        playerMoveSpeed = 60;
+        playerMoveSpeed = 600;
     }
 }
