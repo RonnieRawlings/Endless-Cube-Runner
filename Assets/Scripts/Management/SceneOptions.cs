@@ -49,13 +49,17 @@ public class SceneOptions : MonoBehaviour
         StaticValues.blockMoveSpeed = 400;
         StaticValues.distanceIncrease = 100;
 
-        // Prevents player movement.
+        // Prevents player movement/rotation.
         playerModel.GetComponent<PlayerMovement>().enabled = false;
+        Camera.main.GetComponent<CameraRotation>().enabled = false;
+
+        // Starts player invincible flashing.
+        StartCoroutine(playerModel.GetComponent<PlayerCollison>().InvincibleFlashing());
 
         // Continues block removal around player.
         while (StaticValues.distanceCovered < 1000)
         {
-            playerModel.GetComponent<BlockRemoval>().BlockDestroy();
+            playerModel.GetComponent<BlockRemoval>().BlockDestroy(40.0f);
             yield return new WaitForEndOfFrame();
         }
 
@@ -63,8 +67,9 @@ public class SceneOptions : MonoBehaviour
         StaticValues.blockMoveSpeed = 150;
         StaticValues.distanceIncrease = 30;
 
-        // Re-enables player movement.
+        // Re-enables player movement/rotation.
         playerModel.GetComponent<PlayerMovement>().enabled = true;
+        Camera.main.GetComponent<CameraRotation>().enabled = true;
 
         // Prevents screen re-appearing.    
         StaticValues.hasStartedOnce = true;
