@@ -16,6 +16,8 @@ public class BlockSpawning : MonoBehaviour
     // Blocks that can be spawned in.
     [SerializeField] private GameObject[] prefabBlocks;
 
+    [SerializeField] private float spawnInterval;
+
     /// <summary> method <c>DebugCameraField</c> Places markers where the camera bounds are, shows spawning zone. </summary>
     public void DebugCameraField(float minX, float maxX)
     {
@@ -43,10 +45,13 @@ public class BlockSpawning : MonoBehaviour
             // Sets next travel milestone.
             previousMoveSpeedValue += 500;
 
-            // Increases static values.
+            // Increases static movement/speed values.
             StaticValues.blockMoveSpeed += 50;
             StaticValues.playerMoveSpeed += 200;
             StaticValues.distanceIncrease += 10;
+
+            // Decreases spawn interval.
+            StaticValues.spawnInterval *= 0.95f;
         }
     }
 
@@ -148,7 +153,7 @@ public class BlockSpawning : MonoBehaviour
         IterateBlockMoveSpeed();
 
         // Waits then spawns a cube at random position.
-        yield return new WaitForSeconds(0.08f);
+        yield return new WaitForSeconds(StaticValues.spawnInterval);
         SpawnObject();
 
         // Re-calls this routine.
@@ -163,5 +168,10 @@ public class BlockSpawning : MonoBehaviour
 
         // Begins the  spawing of cube (standard) objs.
         StartCoroutine(ManageObjectSpawning());
+    }
+
+    private void Update()
+    {
+        spawnInterval = StaticValues.spawnInterval;
     }
 }

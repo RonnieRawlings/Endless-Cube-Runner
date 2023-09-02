@@ -18,6 +18,9 @@ public static class StaticValues
     // Movement values.
     public static int blockMoveSpeed = 100, playerMoveSpeed = 600;
 
+    // Spawning interval.
+    public static float spawnInterval = 0.1f;
+
     // Loaded material folder.
     public static Dictionary<int, Material[]> loadedMaterials;
 
@@ -57,5 +60,6 @@ public static class StaticValues
         distanceIncrease = 20;
         blockMoveSpeed = 100;
         playerMoveSpeed = 600;
+        spawnInterval = 0.1f;
     }
 }
